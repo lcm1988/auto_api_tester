@@ -1,0 +1,1857 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>自动化测试报告</title>
+    <meta name="generator" content="HTMLTestRunner 0.8.2"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    
+<style type="text/css" media="screen">
+body        { font-family: verdana, arial, helvetica, sans-serif; font-size: 80%; }
+table       { font-size: 100%; }
+pre         { }
+
+/* -- heading ---------------------------------------------------------------------- */
+h1 {
+	font-size: 16pt;
+	color: gray;
+}
+.heading {
+    margin-top: 0ex;
+    margin-bottom: 1ex;
+}
+
+.heading .attribute {
+    margin-top: 1ex;
+    margin-bottom: 0;
+}
+
+.heading .description {
+    margin-top: 4ex;
+    margin-bottom: 6ex;
+}
+
+/* -- css div popup ------------------------------------------------------------------------ */
+a.popup_link {
+}
+
+a.popup_link:hover {
+    color: red;
+}
+
+.popup_window {
+    display: none;
+    position: relative;
+    left: 0px;
+    top: 0px;
+    /*border: solid #627173 1px; */
+    padding: 10px;
+    background-color: #E6E6D6;
+    font-family: "Lucida Console", "Courier New", Courier, monospace;
+    text-align: left;
+    font-size: 8pt;
+    width: 500px;
+}
+
+}
+/* -- report ------------------------------------------------------------------------ */
+#show_detail_line {
+    margin-top: 3ex;
+    margin-bottom: 1ex;
+}
+#result_table {
+    width: 80%;
+    border-collapse: collapse;
+    border: 1px solid #777;
+}
+#header_row {
+    font-weight: bold;
+    color: white;
+    background-color: #777;
+}
+#result_table td {
+    border: 1px solid #777;
+    padding: 2px;
+}
+#total_row  { font-weight: bold; }
+.passClass  { background-color: #6c6; }
+.failClass  { background-color: #c60; }
+.errorClass { background-color: #c00; }
+.passCase   { color: #6c6; }
+.failCase   { color: #c60; font-weight: bold; }
+.errorCase  { color: #c00; font-weight: bold; }
+.hiddenRow  { display: none; }
+.testcase   { margin-left: 2em; }
+
+
+/* -- ending ---------------------------------------------------------------------- */
+#ending {
+}
+
+</style>
+
+</head>
+<body>
+<script language="javascript" type="text/javascript"><!--
+output_list = Array();
+
+/* level - 0:Summary; 1:Failed; 2:All */
+function showCase(level) {
+    trs = document.getElementsByTagName("tr");
+    for (var i = 0; i < trs.length; i++) {
+        tr = trs[i];
+        id = tr.id;
+        if (id.substr(0,2) == 'ft') {
+            if (level < 1) {
+                tr.className = 'hiddenRow';
+            }
+            else {
+                tr.className = '';
+            }
+        }
+        if (id.substr(0,2) == 'pt') {
+            if (level > 1) {
+                tr.className = '';
+            }
+            else {
+                tr.className = 'hiddenRow';
+            }
+        }
+    }
+}
+
+
+function showClassDetail(cid, count) {
+    var id_list = Array(count);
+    var toHide = 1;
+    for (var i = 0; i < count; i++) {
+        tid0 = 't' + cid.substr(1) + '.' + (i+1);
+        tid = 'f' + tid0;
+        tr = document.getElementById(tid);
+        if (!tr) {
+            tid = 'p' + tid0;
+            tr = document.getElementById(tid);
+        }
+        id_list[i] = tid;
+        if (tr.className) {
+            toHide = 0;
+        }
+    }
+    for (var i = 0; i < count; i++) {
+        tid = id_list[i];
+        if (toHide) {
+            document.getElementById('div_'+tid).style.display = 'none'
+            document.getElementById(tid).className = 'hiddenRow';
+        }
+        else {
+            document.getElementById(tid).className = '';
+        }
+    }
+}
+
+
+function showTestDetail(div_id){
+    var details_div = document.getElementById(div_id)
+    var displayState = details_div.style.display
+    // alert(displayState)
+    if (displayState != 'block' ) {
+        displayState = 'block'
+        details_div.style.display = 'block'
+    }
+    else {
+        details_div.style.display = 'none'
+    }
+}
+
+
+function html_escape(s) {
+    s = s.replace(/&/g,'&amp;');
+    s = s.replace(/</g,'&lt;');
+    s = s.replace(/>/g,'&gt;');
+    return s;
+}
+
+/* obsoleted by detail in <div>
+function showOutput(id, name) {
+    var w = window.open("", //url
+                    name,
+                    "resizable,scrollbars,status,width=800,height=450");
+    d = w.document;
+    d.write("<pre>");
+    d.write(html_escape(output_list[id]));
+    d.write("\n");
+    d.write("<a href='javascript:window.close()'>close</a>\n");
+    d.write("</pre>\n");
+    d.close();
+}
+*/
+--></script>
+
+<div class='heading'>
+<h1>自动化测试报告</h1>
+<p class='attribute'><strong>Start Time:</strong> 2017-07-26 21:19:34</p>
+<p class='attribute'><strong>Duration:</strong> 0:00:08.161000</p>
+<p class='attribute'><strong>Status:</strong> Pass 7 Failure 35 Error 1</p>
+
+<p class='description'>自动化测试报告desc</p>
+</div>
+
+
+
+<p id='show_detail_line'>Show
+<a href='javascript:showCase(0)'>Summary</a>
+<a href='javascript:showCase(1)'>Failed</a>
+<a href='javascript:showCase(2)'>All</a>
+</p>
+<table id='result_table'>
+<colgroup>
+<col align='left' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+<col align='right' />
+</colgroup>
+<tr id='header_row'>
+    <td>Test Group/Test case</td>
+    <td>Count</td>
+    <td>Pass</td>
+    <td>Fail</td>
+    <td>Error</td>
+    <td>View</td>
+</tr>
+
+<tr class='errorClass'>
+    <td>case_contact.casecontact</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>1</td>
+    <td><a href="javascript:showClassDetail('c1',1)">Detail</a></td>
+</tr>
+
+<tr id='ft1.1' class='none'>
+    <td class='errorCase'><div class='testcase'>test_android_contentadd</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft1.1')" >
+        error</a>
+
+    <div id='div_ft1.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft1.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft1.1: E:/pyscript/NT_APITEST/main/run.py
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_contact.py", line 25, in test_android_contentadd
+    print cachepath
+NameError: global name 'cachepath' is not defined
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='passClass'>
+    <td>case_device.device</td>
+    <td>4</td>
+    <td>4</td>
+    <td>0</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c2',4)">Detail</a></td>
+</tr>
+
+<tr id='pt2.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_android_restart</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.1')" >
+        pass</a>
+
+    <div id='div_pt2.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.1: ##### THIS IS IN DEBUG MODLE #####
+对比成功
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.2' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_android_startup</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.2')" >
+        pass</a>
+
+    <div id='div_pt2.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.2: ##### THIS IS IN DEBUG MODLE #####
+对比成功
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_iphone_restart</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.3')" >
+        pass</a>
+
+    <div id='div_pt2.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.3: ##### THIS IS IN DEBUG MODLE #####
+对比成功
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt2.4' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_iphone_startup</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt2.4')" >
+        pass</a>
+
+    <div id='div_pt2.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt2.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt2.4: ##### THIS IS IN DEBUG MODLE #####
+对比成功
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>case_message.casemessage</td>
+    <td>6</td>
+    <td>1</td>
+    <td>5</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c3',6)">Detail</a></td>
+</tr>
+
+<tr id='ft3.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_message_check</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.1')" >
+        fail</a>
+
+    <div id='div_ft3.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.1: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:comment:预期值:1001&lt;type 'str'&gt;,实际值:0&lt;type 'int'&gt;
+/键:data/键:fvideo_msg:预期值:关注人的视频统计&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:comment_msg:预期值:@xx 等3个人评论了你&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:like:预期值:0&lt;type 'str'&gt;,实际值:0&lt;type 'int'&gt;
+/键:data/键:like_msg:预期值:@xx 赞了你&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:follow:预期值:2002&lt;type 'str'&gt;,实际值:0&lt;type 'int'&gt;
+/键:data/键:follow_msg:预期值:@xx 关注了你&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:fvideo:预期值:10&lt;type 'int'&gt;,实际值:0&lt;type 'int'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_message.py", line 48, in test_message_check
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_message_get_comment</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.2')" >
+        fail</a>
+
+    <div id='div_ft3.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.2: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:unread:预期值:3&lt;type 'int'&gt;,实际值:0&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:videouri:预期值:toffee://com.toffee.video/videodetail?videoid=7215&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/videodetail?videoid=8077&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uid:预期值:4567890&lt;type 'str'&gt;,实际值:20000000069&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:vid:预期值:21113456&lt;type 'str'&gt;,实际值:8077&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:commentid:预期值:1234&lt;type 'int'&gt;,实际值:440727&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:nickname:预期值:白兔糖&lt;type 'str'&gt;,实际值:微博账号微博账号微博账号&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:thumb:预期值:http://p8.qhimg.com/t01655742dcf6618f96.png&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/dm/400_400_100/t017f88ebf8ea76e023.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:cover:预期值:http://p8.qhimg.com/t01655742dcf6618f96.png&lt;type 'str'&gt;,实际值:http://p1.qhimg.com/t01edecb3a9c110d86a.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:content:预期值:评论内容&lt;type 'str'&gt;,实际值:睡觉睡觉了投投投通透女女偷偷仑头欧诺哭呢了太可怜了具体&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:time:预期值:1498191179&lt;type 'int'&gt;,实际值:1501067123&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:msg:预期值:白兔糖&lt;type 'str'&gt;,实际值:@微博账号微博账号微博账号&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:extmsg:预期值:评论了你&lt;type 'str'&gt;,实际值:评论了你的作品&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_message.py", line 176, in test_message_get_comment
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt3.3' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_message_get_focus</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt3.3')" >
+        pass</a>
+
+    <div id='div_pt3.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt3.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt3.3: ##### THIS IS IN DEBUG MODLE #####
+对比成功
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_message_get_follow</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.4')" >
+        fail</a>
+
+    <div id='div_ft3.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.4: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:unread:预期值:3&lt;type 'int'&gt;,实际值:0&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uid:预期值:4567890&lt;type 'str'&gt;,实际值:20000002212&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:time:预期值:1498191179&lt;type 'int'&gt;,实际值:1501061933&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:msg:预期值:白兔糖&lt;type 'str'&gt;,实际值:@一二三四五六七八九十一二三四五刘&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:gender:预期值:F&lt;type 'str'&gt;,实际值:M&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:age:预期值:20&lt;type 'int'&gt;,实际值:保密&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:nickname:预期值:白兔糖&lt;type 'str'&gt;,实际值:一二三四五六七八九十一二三四五刘&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:thumb:预期值:http://p8.qhimg.com/t01655742dcf6618f96.png&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/dm/400_400_100/t014c46cce5e299e765.jpg&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_message.py", line 132, in test_message_get_follow
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_message_get_like</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.5')" >
+        fail</a>
+
+    <div id='div_ft3.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.5: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:unread:预期值:3&lt;type 'int'&gt;,实际值:0&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:videouri:预期值:toffee://com.toffee.video/videodetail?videoid=7215&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/videodetail?videoid=10316&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uid:预期值:4567890&lt;type 'str'&gt;,实际值:20000002212&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:vid:预期值:21113456&lt;type 'str'&gt;,实际值:10316&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:time:预期值:1498191179&lt;type 'int'&gt;,实际值:1501061993&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:msg:预期值:白兔糖&lt;type 'str'&gt;,实际值:@一二三四五六七八九十一二三四五刘&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:cover:预期值:http://p8.qhimg.com/t01655742dcf6618f96.png&lt;type 'str'&gt;,实际值:http://p9.qhimg.com/t01ef20dd866fabc5fa.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:nickname:预期值:白兔糖&lt;type 'str'&gt;,实际值:一二三四五六七八九十一二三四五刘&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:thumb:预期值:http://p8.qhimg.com/t01655742dcf6618f96.png&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/dm/400_400_100/t014c46cce5e299e765.jpg&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_message.py", line 90, in test_message_get_like
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft3.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_message_system</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft3.6')" >
+        fail</a>
+
+    <div id='div_ft3.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft3.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft3.6: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:list/下标:0/键:systemTime:预期值:1494233002&lt;type 'int'&gt;,实际值:1499760159&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:subtitle:预期值:“5.4正能量”获奖名单出炉啦&lt;type 'str'&gt;,实际值:达令..记得翻阅日常守则..&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:img:预期值:http://p0.qhimg.com/t0165896716fde54f20.jpg&lt;type 'str'&gt;,实际值:http://p0.qhimg.com/t01a48d3999dbf5d23a.png&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:title:预期值:Hi 你收到一份奶糖活动获奖名单~&lt;type 'str'&gt;,实际值:H404-欢迎加入奶糖&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:id:预期值:2&lt;type 'str'&gt;,实际值:30&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uri:预期值:qhvideo://vapp.360.cn/toffeewebview?url=http%3A%2F%2Ftoffee.app.tvfanqie.com%2Fiphone%2Fh5%2Factivitys%3Fid%3D1&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/webview?url=http%3a%2f%2fwww.naitang.tv%2fweb%2fshare%2findex%3fid%3dbonob5McURD511Ti%26from%3dwx&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:systemContent:预期值:“5.4正能量，我有我的Young”活动结束啦！ 前五名获奖名单如下： NO.1 mikka NO.2 风吹呆毛轮不乱_ NO.3 机智东吉icon NO.4 可爱小怡 NO.5 Kizzy ( 以上排名数据截止到2017年5月5号24点 ) 奶糖运营小编将尽快与你们取得联系，请留意私信消息喔，么么哒~~~&lt;type 'str'&gt;,实际值:Hold住神技能.成为奶糖大红人！&lt;type 'str'&gt;
+/键:data/键:list/下标:1/键:systemTime:预期值:1489661312&lt;type 'int'&gt;,实际值:1497444027&lt;type 'int'&gt;
+/键:data/键:list/下标:1/键:subtitle:预期值:达令..记得翻阅日常守则..&lt;type 'str'&gt;,实际值:系统消息新增20170614副标题&lt;type 'str'&gt;
+/键:data/键:list/下标:1/键:img:预期值:http://p0.qhimg.com/t01a48d3999dbf5d23a.png&lt;type 'str'&gt;,实际值:http://p0.qhimg.com/t0165896716fde54f20.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:1/键:title:预期值:H5-欢迎加入奶糖 ( ื▿ ื)1&lt;type 'str'&gt;,实际值:( ͡° ͜ʖ ͡°)✧&lt;type 'str'&gt;
+/键:data/键:list/下标:1/键:id:预期值:1&lt;type 'str'&gt;,实际值:23&lt;type 'str'&gt;
+/键:data/键:list/下标:1/键:uri:预期值:qhvideo://com.toffee.video/toffeewebview?url=http%3A%2F%2Fwww.naitang.live%2Fiphone%2Fh5%2Fhelp%3Fid%3DbYbobpEcghH4TC%26t%3D1&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/webview?url=http%3A%2F%2Fwww.naitang.live%2Fiphone%2Fh5%2Fhelp%3Fid%3DbYbobpEcghH4TC%26t%3D1&lt;type 'str'&gt;
+/键:data/键:list/下标:1/键:systemContent:预期值:Hold住神技能.成为奶糖大红人！&lt;type 'str'&gt;,实际值:( ͡° ͜ʖ ͡°)✧ 哈哈哈&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_message.py", line 245, in test_message_system
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>case_search.casesearch</td>
+    <td>12</td>
+    <td>0</td>
+    <td>12</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c4',12)">Detail</a></td>
+</tr>
+
+<tr id='ft4.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_adroid_musiclist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.1')" >
+        fail</a>
+
+    <div id='div_ft4.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.1: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:list/下标:0/键:tfuri:预期值:toffee://com.toffee.video/musicdetail?musicid=67&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/musicdetail?musicid=96&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:img:预期值:http://p9.qhimg.com/t01fb977a493b0f658c.webp&lt;type 'str'&gt;,实际值:http://p2.qhimg.com/t016c7aeb73fd32400b.webp&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:duration:预期值:23&lt;type 'str'&gt;,实际值:21&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:title:预期值:夜的第七章&lt;type 'str'&gt;,实际值:告白气球&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:musicid:预期值:67&lt;type 'str'&gt;,实际值:96&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uri:预期值:qhvideo://vapp.360.cn/musicdetail?musicid=67&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/musicdetail?musicid=96&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 134, in test_adroid_musiclist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_adroid_recommendmusiclist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.2')" >
+        fail</a>
+
+    <div id='div_ft4.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.2: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:start:预期值:17&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:total:预期值:17&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:tfuri:预期值:toffee://com.toffee.video/userdetail?userid=20000002616&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/userdetail?userid=20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:fanscount:预期值:4&lt;type 'int'&gt;,实际值:43&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:workscount:预期值:0作品&lt;type 'str'&gt;,实际值:30作品&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uidshow:预期值:13567&lt;type 'str'&gt;,实际值:11204&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:name:预期值:REAL滑板店阿牛&lt;type 'str'&gt;,实际值:@思思哦&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:img:预期值:http://quc.qhimg.com/dm/400_400_100/t01670b36411d0db164.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/t01c77a07138f9ad983.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:gender:预期值:M&lt;type 'str'&gt;,实际值:F&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:age:预期值:29&lt;type 'int'&gt;,实际值:1&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:userid:预期值:20000002616&lt;type 'str'&gt;,实际值:20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uri:预期值:qhvideo://vapp.360.cn/userdetail?userid=20000002616&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/userdetail?userid=20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:signature:预期值:滑板 长板 速降 滑板教学&lt;type 'str'&gt;,实际值:每周看着看看
+哥哥梦想梦想&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:createline:预期值:1495855445&lt;type 'str'&gt;,实际值:1501039055&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 173, in test_adroid_recommendmusiclist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_adroid_recommendtopiclist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.3')" >
+        fail</a>
+
+    <div id='div_ft4.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.3: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:list/下标:0/键:playDesc:预期值:参与人数:7人&lt;type 'str'&gt;,实际值:参与人数:9人&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:counts:预期值:7&lt;type 'int'&gt;,实际值:9&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:sharecount:预期值:0&lt;type 'int'&gt;,实际值:1&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:playcount:预期值:7&lt;type 'int'&gt;,实际值:9&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:shareDesc:预期值:分享次数:0&lt;type 'str'&gt;,实际值:分享次数:1&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 253, in test_adroid_recommendtopiclist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_adroid_recommenduserlist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.4')" >
+        fail</a>
+
+    <div id='div_ft4.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.4: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:start:预期值:17&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:total:预期值:17&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:tfuri:预期值:toffee://com.toffee.video/userdetail?userid=20000002616&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/userdetail?userid=20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:fanscount:预期值:4&lt;type 'int'&gt;,实际值:43&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:workscount:预期值:0作品&lt;type 'str'&gt;,实际值:30作品&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uidshow:预期值:13567&lt;type 'str'&gt;,实际值:11204&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:name:预期值:@REAL滑板店阿牛&lt;type 'str'&gt;,实际值:@思思哦&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:img:预期值:http://quc.qhimg.com/dm/400_400_100/t01670b36411d0db164.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/t01c77a07138f9ad983.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:gender:预期值:M&lt;type 'str'&gt;,实际值:F&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:age:预期值:29&lt;type 'int'&gt;,实际值:1&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:userid:预期值:20000002616&lt;type 'str'&gt;,实际值:20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uri:预期值:qhvideo://vapp.360.cn/userdetail?userid=20000002616&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/userdetail?userid=20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:signature:预期值:滑板 长板 速降 滑板教学&lt;type 'str'&gt;,实际值:每周看着看看
+哥哥梦想梦想&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:createline:预期值:1495855445&lt;type 'str'&gt;,实际值:1501039055&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 98, in test_adroid_recommenduserlist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_adroid_topiclist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.5')" >
+        fail</a>
+
+    <div id='div_ft4.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.5: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:total:预期值:6&lt;type 'str'&gt;,实际值:12&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:playDesc:预期值:参与人数:2人&lt;type 'str'&gt;,实际值:参与人数:10人&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:counts:预期值:2&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:playcount:预期值:2&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 214, in test_adroid_topiclist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_adroid_userlist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.6')" >
+        fail</a>
+
+    <div id='div_ft4.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.6: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:total:预期值:7&lt;type 'int'&gt;,实际值:44&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:tfuri:预期值:toffee://com.toffee.video/userdetail?userid=20000000470&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/userdetail?userid=10010003041&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uidshow:预期值:11450&lt;type 'str'&gt;,实际值:16887&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:name:预期值:哈哈&lt;type 'str'&gt;,实际值:哈哈哈哈哈&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:img:预期值:http://quc.qhimg.com/dm/400_400_100/t01f01ea313f1f1acee.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/t013e7571f24d0f7417.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:gender:预期值:M&lt;type 'str'&gt;,实际值:保密&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:age:预期值:27&lt;type 'int'&gt;,实际值:保密&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:userid:预期值:20000000470&lt;type 'str'&gt;,实际值:10010003041&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uri:预期值:qhvideo://vapp.360.cn/userdetail?userid=20000000470&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/userdetail?userid=10010003041&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:signature:预期值:&lt;type 'str'&gt;,实际值:来奶糖，发现新的自己！&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:createline:预期值:1495855271&lt;type 'str'&gt;,实际值:1496724401&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 59, in test_adroid_userlist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_musiclist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.7')" >
+        fail</a>
+
+    <div id='div_ft4.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.7: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:list/下标:0/键:tfuri:预期值:toffee://com.toffee.video/musicdetail?musicid=67&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/musicdetail?musicid=96&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:img:预期值:http://p9.qhimg.com/t01fb977a493b0f658c.webp&lt;type 'str'&gt;,实际值:http://p2.qhimg.com/t016c7aeb73fd32400b.webp&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:duration:预期值:23&lt;type 'str'&gt;,实际值:21&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:title:预期值:夜的第七章&lt;type 'str'&gt;,实际值:告白气球&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:musicid:预期值:67&lt;type 'str'&gt;,实际值:96&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uri:预期值:qhvideo://vapp.360.cn/musicdetail?musicid=67&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/musicdetail?musicid=96&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 368, in test_iphone_musiclist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.8' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_recommendmusiclist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.8')" >
+        fail</a>
+
+    <div id='div_ft4.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.8: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:start:预期值:17&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:total:预期值:17&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:tfuri:预期值:toffee://com.toffee.video/userdetail?userid=20000002616&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/userdetail?userid=20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:fanscount:预期值:4&lt;type 'int'&gt;,实际值:43&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:workscount:预期值:0作品&lt;type 'str'&gt;,实际值:30作品&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uidshow:预期值:13567&lt;type 'str'&gt;,实际值:11204&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:name:预期值:REAL滑板店阿牛&lt;type 'str'&gt;,实际值:@思思哦&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:img:预期值:http://quc.qhimg.com/dm/400_400_100/t01670b36411d0db164.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/t01c77a07138f9ad983.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:gender:预期值:M&lt;type 'str'&gt;,实际值:F&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:age:预期值:29&lt;type 'int'&gt;,实际值:1&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:userid:预期值:20000002616&lt;type 'str'&gt;,实际值:20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uri:预期值:qhvideo://vapp.360.cn/userdetail?userid=20000002616&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/userdetail?userid=20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:signature:预期值:滑板 长板 速降 滑板教学&lt;type 'str'&gt;,实际值:每周看着看看
+哥哥梦想梦想&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:createline:预期值:1495855445&lt;type 'str'&gt;,实际值:1501039055&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 407, in test_iphone_recommendmusiclist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.9' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_recommendtopiclist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.9')" >
+        fail</a>
+
+    <div id='div_ft4.9' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.9').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.9: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:list/下标:0/键:playDesc:预期值:参与人数:7人&lt;type 'str'&gt;,实际值:参与人数:9人&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:counts:预期值:7&lt;type 'int'&gt;,实际值:9&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:sharecount:预期值:0&lt;type 'int'&gt;,实际值:1&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:playcount:预期值:7&lt;type 'int'&gt;,实际值:9&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:shareDesc:预期值:分享次数:0&lt;type 'str'&gt;,实际值:分享次数:1&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 487, in test_iphone_recommendtopiclist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.10' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_recommenduserlist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.10')" >
+        fail</a>
+
+    <div id='div_ft4.10' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.10').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.10: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:start:预期值:17&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:total:预期值:17&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:tfuri:预期值:toffee://com.toffee.video/userdetail?userid=20000002616&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/userdetail?userid=20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:fanscount:预期值:4&lt;type 'int'&gt;,实际值:43&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:workscount:预期值:0作品&lt;type 'str'&gt;,实际值:30作品&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uidshow:预期值:13567&lt;type 'str'&gt;,实际值:11204&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:name:预期值:REAL滑板店阿牛&lt;type 'str'&gt;,实际值:@思思哦&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:img:预期值:http://quc.qhimg.com/dm/400_400_100/t01670b36411d0db164.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/t01c77a07138f9ad983.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:gender:预期值:M&lt;type 'str'&gt;,实际值:F&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:age:预期值:29&lt;type 'int'&gt;,实际值:1&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:userid:预期值:20000002616&lt;type 'str'&gt;,实际值:20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uri:预期值:qhvideo://vapp.360.cn/userdetail?userid=20000002616&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/userdetail?userid=20000000224&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:signature:预期值:滑板 长板 速降 滑板教学&lt;type 'str'&gt;,实际值:每周看着看看
+哥哥梦想梦想&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:createline:预期值:1495855445&lt;type 'str'&gt;,实际值:1501039055&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 332, in test_iphone_recommenduserlist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.11' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_topiclist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.11')" >
+        fail</a>
+
+    <div id='div_ft4.11' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.11').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.11: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:total:预期值:6&lt;type 'str'&gt;,实际值:12&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:playDesc:预期值:参与人数:2人&lt;type 'str'&gt;,实际值:参与人数:10人&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:counts:预期值:2&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:playcount:预期值:2&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 448, in test_iphone_topiclist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft4.12' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_userlist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft4.12')" >
+        fail</a>
+
+    <div id='div_ft4.12' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft4.12').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft4.12: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:total:预期值:7&lt;type 'int'&gt;,实际值:44&lt;type 'int'&gt;
+/键:data/键:list/下标:0/键:tfuri:预期值:toffee://com.toffee.video/userdetail?userid=20000000470&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/userdetail?userid=10010003041&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uidshow:预期值:11450&lt;type 'str'&gt;,实际值:16887&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:name:预期值:哈哈&lt;type 'str'&gt;,实际值:@哈哈哈哈哈&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:img:预期值:http://quc.qhimg.com/dm/400_400_100/t01f01ea313f1f1acee.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/t013e7571f24d0f7417.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:gender:预期值:M&lt;type 'str'&gt;,实际值:保密&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:age:预期值:27&lt;type 'int'&gt;,实际值:保密&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:userid:预期值:20000000470&lt;type 'str'&gt;,实际值:10010003041&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:uri:预期值:qhvideo://vapp.360.cn/userdetail?userid=20000000470&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/userdetail?userid=10010003041&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:signature:预期值:&lt;type 'str'&gt;,实际值:来奶糖，发现新的自己！&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:createline:预期值:1495855271&lt;type 'str'&gt;,实际值:1496724401&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_search.py", line 293, in test_iphone_userlist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>case_topic.casetopic</td>
+    <td>4</td>
+    <td>0</td>
+    <td>4</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c5',4)">Detail</a></td>
+</tr>
+
+<tr id='ft5.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_android_videohotlist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.1')" >
+        fail</a>
+
+    <div id='div_ft5.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.1: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:start:预期值:12&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:total:预期值:50&lt;type 'str'&gt;,实际值:47&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:comment/键:title:预期值:52&lt;type 'str'&gt;,实际值:77&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:downloadurl:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/L3Rlc3QvdmlkZW8vZW4vMjAxNzA2MTgvMTQ5Nzc5NjAyNS81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC5tcDQ%3D&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC92aWRlby9lbi8yMDE3MDcxOC8xNTAwMzMzNjI3LzUyODQ1OTc5MTU2YTVjYTBiNTc5MjY4NzNmOWNlOGUwLm1wNA%3D%3D&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:playurl_key:预期值:718236f599f507ed01842e5a467d9b39&lt;type 'str'&gt;,实际值:b2d5517722372e49396f22e1d123cc10&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:playurl:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/L3Rlc3QvdmlkZW8vZW4vMjAxNzA2MTgvMTQ5Nzc5NjAyNS81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC5tcDQ%3D&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC92aWRlby9lbi8yMDE3MDcxOC8xNTAwMzMzNjI3LzUyODQ1OTc5MTU2YTVjYTBiNTc5MjY4NzNmOWNlOGUwLm1wNA%3D%3D&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:img:预期值:http://quc.qhimg.com/dm/400_400_100/t017b9a9f0cb295bd28.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/dm/80_80_/t0174bd7067e6474083.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:share/键:desc:预期值:【奶糖】——发现新的自己 ^_^o ~~ 15秒，打破平庸 爆炸的人生，精彩的你&lt;type 'str'&gt;,实际值:【奶糖】——发现新的自己 ^_^oo ~~ 15秒，打破平庸，爆炸的人生，精彩的你&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:gif:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/dGVzdC9kcGljL3dlYnAvMjAxNzA2MjMvMTQ5ODIwODUyNy81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC53ZWJw&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC9kcGljL3dlYnAvMjAxNzA3MTgvMTUwMDMxMDUyMC81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC53ZWJw&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:playcount:预期值:2.8w&lt;type 'str'&gt;,实际值:3.7w&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:like/键:title:预期值:31&lt;type 'str'&gt;,实际值:223&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:img:预期值:http://p5.qhimg.com/dm/150_150_90/t012388f8f847c3c197.jpg&lt;type 'str'&gt;,实际值:http://p5.qhimg.com/dm/80_80_/t012388f8f847c3c197.jpg&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_topic.py", line 116, in test_android_videohotlist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_android_videonewlist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.2')" >
+        fail</a>
+
+    <div id='div_ft5.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.2: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:start:预期值:12&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:total:预期值:50&lt;type 'str'&gt;,实际值:47&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:comment/键:tfuri:预期值:toffee://com.toffee.video/commentlist?commentid=5907&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/commentlist?commentid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:comment/键:uri:预期值:qhvideo://vapp.360.cn/commentlist?commentid=5907&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/commentlist?commentid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:comment/键:id:预期值:5907&lt;type 'str'&gt;,实际值:7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:comment/键:title:预期值:52&lt;type 'str'&gt;,实际值:0&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:downloadurl:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/L3Rlc3QvdmlkZW8vZW4vMjAxNzA2MTgvMTQ5Nzc5NjAyNS81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC5tcDQ%3D&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC92aWRlby9lbi8yMDE3MDcxOC8xNTAwMzI4MDMyLzJlMGYyZTk3YjVmOGJhMjVmNTlhMjBjNDRkZWJhYTRmLm1wNA%3D%3D&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:playurl_key:预期值:718236f599f507ed01842e5a467d9b39&lt;type 'str'&gt;,实际值:eddd4dd5a357a5f6b1dc6eb34984eae9&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:videoid:预期值:5907&lt;type 'str'&gt;,实际值:7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:playurl:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/L3Rlc3QvdmlkZW8vZW4vMjAxNzA2MTgvMTQ5Nzc5NjAyNS81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC5tcDQ%3D&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC92aWRlby9lbi8yMDE3MDcxOC8xNTAwMzI4MDMyLzJlMGYyZTk3YjVmOGJhMjVmNTlhMjBjNDRkZWJhYTRmLm1wNA%3D%3D&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:tfuri:预期值:toffee://com.toffee.video/userdetail?userid=20000002149&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/userdetail?userid=20000000023&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:img:预期值:http://quc.qhimg.com/dm/400_400_100/t017b9a9f0cb295bd28.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/dm/80_80_/t01dcf6e5b0dc753893.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:messageid:预期值:toffee_20000002149&lt;type 'str'&gt;,实际值:toffee_20000000023&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:uidshow:预期值:13109&lt;type 'str'&gt;,实际值:11020&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:title:预期值:小刘&lt;type 'str'&gt;,实际值:萌萌哒&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:userid:预期值:20000002149&lt;type 'str'&gt;,实际值:20000000023&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:uri:预期值:qhvideo://vapp.360.cn/userdetail?userid=20000002149&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/userdetail?userid=20000000023&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:messagepasswd:预期值:5e3ce8472e2270ca33a8c8165043ba5f&lt;type 'str'&gt;,实际值:a1848cf3fc82a0650eef9a3790603ca7&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:share/键:url:预期值:http://toffee.app.test.tvfanqie.com/web/share/index?id=cIvob5EUTRnyTy&lt;type 'str'&gt;,实际值:http://toffee.app.test.tvfanqie.com/web/share/index?id=boXmapAVTxTzUC&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:share/键:desc:预期值:【奶糖】——发现新的自己 ^_^o ~~ 15秒，打破平庸 爆炸的人生，精彩的你&lt;type 'str'&gt;,实际值:【奶糖】——发现新的自己 ^_^oo ~~ 15秒，打破平庸，爆炸的人生，精彩的你&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:share/键:img:预期值:http://p0.qhimg.com/t010c8a6135fe3681b7.jpg&lt;type 'str'&gt;,实际值:http://p6.qhimg.com/t019231e62dea2246c4.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:share/键:title:预期值:你自己的#话题测试27#@小刘 ——奶糖短视频&lt;type 'str'&gt;,实际值:#话题测试27#@萌萌哒 的奶糖短视频已经炸了！到底咋回事？&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:gif:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/dGVzdC9kcGljL3dlYnAvMjAxNzA2MjMvMTQ5ODIwODUyNy81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC53ZWJw&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC9kcGljL3dlYnAvMjAxNzA3MTgvMTUwMDMxMzg3MS8yZTBmMmU5N2I1ZjhiYTI1ZjU5YTIwYzQ0ZGViYWE0Zi53ZWJw&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:tfuri:预期值:toffee://com.toffee.video/videodetail?videoid=5907&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/videodetail?videoid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:img:预期值:http://p0.qhimg.com/t010c8a6135fe3681b7.jpg&lt;type 'str'&gt;,实际值:http://p6.qhimg.com/t019231e62dea2246c4.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:title:预期值:你自己的&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:duration:预期值:4&lt;type 'str'&gt;,实际值:8&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:playcount:预期值:2.8w&lt;type 'str'&gt;,实际值:90&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:uri:预期值:qhvideo://vapp.360.cn/videodetail?videoid=5907&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/videodetail?videoid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:hottag:预期值:http://p0.qhimg.com/t015049183a71c3866a.png&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:id:预期值:5907&lt;type 'str'&gt;,实际值:7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:like/键:tfuri:预期值:toffee://com.toffee.video/userthumbsup?userid=20000002149&amp;videoid=5907&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/userthumbsup?userid=20000000023&amp;videoid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:like/键:uri:预期值:qhvideo://vapp.360.cn/userthumbsup?userid=20000002149&amp;videoid=5907&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/userthumbsup?userid=20000000023&amp;videoid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:like/键:title:预期值:31&lt;type 'str'&gt;,实际值:0&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:cover:预期值:http://p0.qhimg.com/t010c8a6135fe3681b7.jpg&lt;type 'str'&gt;,实际值:http://p6.qhimg.com/t019231e62dea2246c4.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:tfuri:预期值:toffee://com.toffee.video/musicdetail?musicid=531&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:img:预期值:http://p5.qhimg.com/dm/150_150_90/t012388f8f847c3c197.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/dm/80_80_/t01dcf6e5b0dc753893.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:title:预期值:下个，路口，见&lt;type 'str'&gt;,实际值:视频原声&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:uri:预期值:qhvideo://vapp.360.cn/musicdetail?musicid=531&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:musicid:预期值:531&lt;type 'str'&gt;,实际值:0&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:desc:预期值:下个，路口，见 - 李宇春&lt;type 'str'&gt;,实际值:视频原声-萌萌哒&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_topic.py", line 213, in test_android_videonewlist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_videohotlist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.3')" >
+        fail</a>
+
+    <div id='div_ft5.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.3: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:start:预期值:12&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:total:预期值:50&lt;type 'str'&gt;,实际值:47&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:comment/键:title:预期值:52&lt;type 'str'&gt;,实际值:77&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:downloadurl:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/L3Rlc3QvdmlkZW8vZW4vMjAxNzA2MTgvMTQ5Nzc5NjAyNS81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC5tcDQ%3D&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC92aWRlby9lbi8yMDE3MDcxOC8xNTAwMzMzNjI3LzUyODQ1OTc5MTU2YTVjYTBiNTc5MjY4NzNmOWNlOGUwLm1wNA%3D%3D&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:playurl_key:预期值:718236f599f507ed01842e5a467d9b39&lt;type 'str'&gt;,实际值:b2d5517722372e49396f22e1d123cc10&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:playurl:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/L3Rlc3QvdmlkZW8vZW4vMjAxNzA2MTgvMTQ5Nzc5NjAyNS81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC5tcDQ%3D&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC92aWRlby9lbi8yMDE3MDcxOC8xNTAwMzMzNjI3LzUyODQ1OTc5MTU2YTVjYTBiNTc5MjY4NzNmOWNlOGUwLm1wNA%3D%3D&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:img:预期值:http://quc.qhimg.com/dm/400_400_100/t017b9a9f0cb295bd28.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/dm/80_80_/t0174bd7067e6474083.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:share/键:desc:预期值:【奶糖】——发现新的自己 ^_^o ~~ 15秒，打破平庸 爆炸的人生，精彩的你&lt;type 'str'&gt;,实际值:【奶糖】——发现新的自己 ^_^oo ~~ 15秒，打破平庸，爆炸的人生，精彩的你&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:gif:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/dGVzdC9kcGljL3dlYnAvMjAxNzA2MjMvMTQ5ODIwODUyNy81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC53ZWJw&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC9kcGljL3dlYnAvMjAxNzA3MTgvMTUwMDMxMDUyMC81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC53ZWJw&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:playcount:预期值:2.8w&lt;type 'str'&gt;,实际值:3.7w&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:like/键:title:预期值:31&lt;type 'str'&gt;,实际值:223&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:img:预期值:http://p5.qhimg.com/dm/150_150_90/t012388f8f847c3c197.jpg&lt;type 'str'&gt;,实际值:http://p5.qhimg.com/dm/80_80_/t012388f8f847c3c197.jpg&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_topic.py", line 310, in test_iphone_videohotlist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft5.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_videonewlist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft5.4')" >
+        fail</a>
+
+    <div id='div_ft5.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft5.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft5.4: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:start:预期值:12&lt;type 'int'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:total:预期值:50&lt;type 'str'&gt;,实际值:47&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:comment/键:tfuri:预期值:toffee://com.toffee.video/commentlist?commentid=5907&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/commentlist?commentid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:comment/键:uri:预期值:qhvideo://vapp.360.cn/commentlist?commentid=5907&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/commentlist?commentid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:comment/键:id:预期值:5907&lt;type 'str'&gt;,实际值:7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:comment/键:title:预期值:52&lt;type 'str'&gt;,实际值:0&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:downloadurl:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/L3Rlc3QvdmlkZW8vZW4vMjAxNzA2MTgvMTQ5Nzc5NjAyNS81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC5tcDQ%3D&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC92aWRlby9lbi8yMDE3MDcxOC8xNTAwMzI4MDMyLzJlMGYyZTk3YjVmOGJhMjVmNTlhMjBjNDRkZWJhYTRmLm1wNA%3D%3D&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:playurl_key:预期值:718236f599f507ed01842e5a467d9b39&lt;type 'str'&gt;,实际值:eddd4dd5a357a5f6b1dc6eb34984eae9&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:videoid:预期值:5907&lt;type 'str'&gt;,实际值:7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:play/键:playurl:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/L3Rlc3QvdmlkZW8vZW4vMjAxNzA2MTgvMTQ5Nzc5NjAyNS81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC5tcDQ%3D&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC92aWRlby9lbi8yMDE3MDcxOC8xNTAwMzI4MDMyLzJlMGYyZTk3YjVmOGJhMjVmNTlhMjBjNDRkZWJhYTRmLm1wNA%3D%3D&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:tfuri:预期值:toffee://com.toffee.video/userdetail?userid=20000002149&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/userdetail?userid=20000000023&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:img:预期值:http://quc.qhimg.com/dm/400_400_100/t017b9a9f0cb295bd28.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/dm/80_80_/t01dcf6e5b0dc753893.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:messageid:预期值:toffee_20000002149&lt;type 'str'&gt;,实际值:toffee_20000000023&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:uidshow:预期值:13109&lt;type 'str'&gt;,实际值:11020&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:title:预期值:小刘&lt;type 'str'&gt;,实际值:萌萌哒&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:userid:预期值:20000002149&lt;type 'str'&gt;,实际值:20000000023&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:uri:预期值:qhvideo://vapp.360.cn/userdetail?userid=20000002149&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/userdetail?userid=20000000023&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:auther/键:messagepasswd:预期值:5e3ce8472e2270ca33a8c8165043ba5f&lt;type 'str'&gt;,实际值:a1848cf3fc82a0650eef9a3790603ca7&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:share/键:url:预期值:http://toffee.app.test.tvfanqie.com/web/share/index?id=cIvob5EUTRnyTy&lt;type 'str'&gt;,实际值:http://toffee.app.test.tvfanqie.com/web/share/index?id=boXmapAVTxTzUC&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:share/键:desc:预期值:【奶糖】——发现新的自己 ^_^o ~~ 15秒，打破平庸 爆炸的人生，精彩的你&lt;type 'str'&gt;,实际值:【奶糖】——发现新的自己 ^_^oo ~~ 15秒，打破平庸，爆炸的人生，精彩的你&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:share/键:img:预期值:http://p0.qhimg.com/t010c8a6135fe3681b7.jpg&lt;type 'str'&gt;,实际值:http://p6.qhimg.com/t019231e62dea2246c4.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:share/键:title:预期值:你自己的#话题测试27#@小刘 ——奶糖短视频&lt;type 'str'&gt;,实际值:#话题测试27#@萌萌哒 的奶糖短视频已经炸了！到底咋回事？&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:gif:预期值:http://tf.play.360kan.com/Object.access/toffee-source-src/dGVzdC9kcGljL3dlYnAvMjAxNzA2MjMvMTQ5ODIwODUyNy81Mjg0NTk3OTE1NmE1Y2EwYjU3OTI2ODczZjljZThlMC53ZWJw&lt;type 'str'&gt;,实际值:http://v1.cdn.naitang.tv/naitang-source-qa/dGVzdC9kcGljL3dlYnAvMjAxNzA3MTgvMTUwMDMxMzg3MS8yZTBmMmU5N2I1ZjhiYTI1ZjU5YTIwYzQ0ZGViYWE0Zi53ZWJw&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:tfuri:预期值:toffee://com.toffee.video/videodetail?videoid=5907&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/videodetail?videoid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:img:预期值:http://p0.qhimg.com/t010c8a6135fe3681b7.jpg&lt;type 'str'&gt;,实际值:http://p6.qhimg.com/t019231e62dea2246c4.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:title:预期值:你自己的&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:duration:预期值:4&lt;type 'str'&gt;,实际值:8&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:playcount:预期值:2.8w&lt;type 'str'&gt;,实际值:90&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:uri:预期值:qhvideo://vapp.360.cn/videodetail?videoid=5907&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/videodetail?videoid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:base/键:hottag:预期值:http://p0.qhimg.com/t015049183a71c3866a.png&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:id:预期值:5907&lt;type 'str'&gt;,实际值:7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:like/键:tfuri:预期值:toffee://com.toffee.video/userthumbsup?userid=20000002149&amp;videoid=5907&lt;type 'str'&gt;,实际值:toffee://com.toffee.video/userthumbsup?userid=20000000023&amp;videoid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:like/键:uri:预期值:qhvideo://vapp.360.cn/userthumbsup?userid=20000002149&amp;videoid=5907&lt;type 'str'&gt;,实际值:qhvideo://vapp.360.cn/userthumbsup?userid=20000000023&amp;videoid=7418&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:like/键:title:预期值:31&lt;type 'str'&gt;,实际值:0&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:cover:预期值:http://p0.qhimg.com/t010c8a6135fe3681b7.jpg&lt;type 'str'&gt;,实际值:http://p6.qhimg.com/t019231e62dea2246c4.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:tfuri:预期值:toffee://com.toffee.video/musicdetail?musicid=531&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:img:预期值:http://p5.qhimg.com/dm/150_150_90/t012388f8f847c3c197.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/dm/80_80_/t01dcf6e5b0dc753893.jpg&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:title:预期值:下个，路口，见&lt;type 'str'&gt;,实际值:视频原声&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:uri:预期值:qhvideo://vapp.360.cn/musicdetail?musicid=531&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:musicid:预期值:531&lt;type 'str'&gt;,实际值:0&lt;type 'str'&gt;
+/键:data/键:list/下标:0/键:music/键:desc:预期值:下个，路口，见 - 李宇春&lt;type 'str'&gt;,实际值:视频原声-萌萌哒&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_topic.py", line 407, in test_iphone_videonewlist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>case_user.caseuser</td>
+    <td>8</td>
+    <td>2</td>
+    <td>6</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c6',8)">Detail</a></td>
+</tr>
+
+<tr id='pt6.1' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_adroid_contentadd</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.1')" >
+        pass</a>
+
+    <div id='div_pt6.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.1: JTg3JThDJUU1JUE1JUE1JUMyJUI3JUU5JUE5JUFDJUU1JTg1JThCJUU2JTgwJTlEJnNpZ249M2RiZjY4MzBhZjM5MDdhMTA3NWFkNDBhY2I4MDc1YTF4aWFua2FudWN1aWQ9MjAwMDAwMDIyMjEmbG9naW5fdGltZT0xNTAxMDc0Mzg4JnRodW1iPTFfdDAwZGY1NTFhNTgzYTg3ZjRlOSZuaWNrbmFtZT0lRTk= 7daae8 13172
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_android_contentlist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.2')" >
+        fail</a>
+
+    <div id='div_ft6.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.2: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:start:预期值:10&lt;type 'str'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:total:预期值:100&lt;type 'str'&gt;,实际值:0&lt;type 'int'&gt;
+结构异常or数据缺失:不存在的下标：/键:data/键:list/下标:0
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_user.py", line 62, in test_android_contentlist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_android_levelcheck</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.3')" >
+        fail</a>
+
+    <div id='div_ft6.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.3: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:result:预期值:True&lt;type 'bool'&gt;,实际值:False&lt;type 'bool'&gt;
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:lowerpoint
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:level
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:upperlevel
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:point
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:upperpoint
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:descurl
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:lowerlevel
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_user.py", line 125, in test_android_levelcheck
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_android_leveldetail</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.4')" >
+        fail</a>
+
+    <div id='div_ft6.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.4: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:lowerpoint:预期值:0&lt;type 'str'&gt;,实际值:1240&lt;type 'int'&gt;
+/键:data/键:level:预期值:0&lt;type 'int'&gt;,实际值:8&lt;type 'int'&gt;
+/键:data/键:upperlevel:预期值:1&lt;type 'int'&gt;,实际值:9&lt;type 'int'&gt;
+/键:data/键:point:预期值:0&lt;type 'int'&gt;,实际值:1332&lt;type 'int'&gt;
+/键:data/键:upperpoint:预期值:50&lt;type 'str'&gt;,实际值:1650&lt;type 'int'&gt;
+/键:data/键:descurl:预期值:http://toffee.app.test.tvfanqie.com/static/mylevel.html&lt;type 'str'&gt;,实际值:http://toffee.app.test.tvfanqie.com/static/mylevel.html?t=1501075180&lt;type 'str'&gt;
+/键:data/键:lowerlevel:预期值:0&lt;type 'int'&gt;,实际值:8&lt;type 'int'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_user.py", line 184, in test_android_leveldetail
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='pt6.5' class='hiddenRow'>
+    <td class='none'><div class='testcase'>test_iphone_contentadd</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_pt6.5')" >
+        pass</a>
+
+    <div id='div_pt6.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_pt6.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+pt6.5: JTg3JThDJUU1JUE1JUE1JUMyJUI3JUU5JUE5JUFDJUU1JTg1JThCJUU2JTgwJTlEJnNpZ249M2RiZjY4MzBhZjM5MDdhMTA3NWFkNDBhY2I4MDc1YTF4aWFua2FudWN1aWQ9MjAwMDAwMDIyMjEmbG9naW5fdGltZT0xNTAxMDc0Mzg4JnRodW1iPTFfdDAwZGY1NTFhNTgzYTg3ZjRlOSZuaWNrbmFtZT0lRTk= 7daae8 13172
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_contentlist</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.6')" >
+        fail</a>
+
+    <div id='div_ft6.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.6: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:start:预期值:10&lt;type 'str'&gt;,实际值:10&lt;type 'int'&gt;
+/键:data/键:total:预期值:100&lt;type 'str'&gt;,实际值:0&lt;type 'int'&gt;
+结构异常or数据缺失:不存在的下标：/键:data/键:list/下标:0
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_user.py", line 94, in test_iphone_contentlist
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_levelcheck</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.7')" >
+        fail</a>
+
+    <div id='div_ft6.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.7: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:result:预期值:True&lt;type 'bool'&gt;,实际值:False&lt;type 'bool'&gt;
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:lowerpoint
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:level
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:upperlevel
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:point
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:upperpoint
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:descurl
+结构异常or数据缺失:不存在的键：/键:data/键:detail/键:lowerlevel
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_user.py", line 156, in test_iphone_levelcheck
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft6.8' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_leveldetail</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft6.8')" >
+        fail</a>
+
+    <div id='div_ft6.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft6.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft6.8: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:lowerpoint:预期值:0&lt;type 'str'&gt;,实际值:1240&lt;type 'int'&gt;
+/键:data/键:level:预期值:0&lt;type 'int'&gt;,实际值:8&lt;type 'int'&gt;
+/键:data/键:upperlevel:预期值:1&lt;type 'int'&gt;,实际值:9&lt;type 'int'&gt;
+/键:data/键:point:预期值:0&lt;type 'int'&gt;,实际值:1332&lt;type 'int'&gt;
+/键:data/键:upperpoint:预期值:50&lt;type 'str'&gt;,实际值:1650&lt;type 'int'&gt;
+/键:data/键:descurl:预期值:http://toffee.app.test.tvfanqie.com/static/mylevel.html&lt;type 'str'&gt;,实际值:http://toffee.app.test.tvfanqie.com/static/mylevel.html?t=1501075181&lt;type 'str'&gt;
+/键:data/键:lowerlevel:预期值:0&lt;type 'int'&gt;,实际值:8&lt;type 'int'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_user.py", line 212, in test_iphone_leveldetail
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr class='failClass'>
+    <td>case_verify.casemessage</td>
+    <td>8</td>
+    <td>0</td>
+    <td>8</td>
+    <td>0</td>
+    <td><a href="javascript:showClassDetail('c7',8)">Detail</a></td>
+</tr>
+
+<tr id='ft7.1' class='none'>
+    <td class='failCase'><div class='testcase'>test_android_officeverify</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.1')" >
+        fail</a>
+
+    <div id='div_ft7.1' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.1').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.1: ##### THIS IS IN DEBUG MODLE #####
+/键:msg:预期值:ok&lt;type 'str'&gt;,实际值:审核中，不能修改&lt;type 'str'&gt;
+/键:error:预期值:0&lt;type 'int'&gt;,实际值:8040&lt;type 'int'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_verify.py", line 101, in test_android_officeverify
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.2' class='none'>
+    <td class='failCase'><div class='testcase'>test_android_officeverify_detail</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.2')" >
+        fail</a>
+
+    <div id='div_ft7.2' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.2').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.2: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:status:预期值:1&lt;type 'int'&gt;,实际值:2&lt;type 'str'&gt;
+/键:data/键:phone:预期值:f76NjL9J1ngy0omI+5p5qw==&lt;type 'str'&gt;,实际值:AU7DG6Vq2yHbjW8lV3iFkw==&lt;type 'str'&gt;
+/键:data/键:reason:预期值:宇宙第一帅&lt;type 'str'&gt;,实际值:胖子&lt;type 'str'&gt;
+/键:data/键:code:预期值:zscJrRTMXMb5M7L2B0+EbBsJIns+Zq28&lt;type 'str'&gt;,实际值:LJh9VAu839+UyTZavuMfbwe++d7q7j3U&lt;type 'str'&gt;
+/键:data/键:realname:预期值:帅哥&lt;type 'str'&gt;,实际值:胖子&lt;type 'str'&gt;
+/键:data/键:imgReason:预期值:http://dl-beijing.oss.yunpan.360.cn/oss/naitang-img-qa/aW1hZ2UvMjAxNzA3MjAvOTk4OTI0NzRhNzM5MDljZTdiMTdkYTY2YmExNTJmNGEuanBn?scid=93&amp;fhash=98fdd6df444339f266b30c6da45c743c672b70d0&amp;e=1500599007&amp;uid=162963675&amp;validity=0&amp;keyspace=1&amp;s=e3f812962832e637e1c827895cc70172&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:auditReason:预期值:你真的是宇宙第一帅吗&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:imgCode:预期值:http://dl-beijing.oss.yunpan.360.cn/oss/naitang-img-qa/aW1hZ2UvMjAxNzA3MjAvOTk4OTI0NzRhNzM5MDljZTdiMTdkYTY2YmExNTJmNGEuanBn?scid=93&amp;fhash=98fdd6df444339f266b30c6da45c743c672b70d0&amp;e=1500599007&amp;uid=162963675&amp;validity=0&amp;keyspace=1&amp;s=e3f812962832e637e1c827895cc70172&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_verify.py", line 133, in test_android_officeverify_detail
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.3' class='none'>
+    <td class='failCase'><div class='testcase'>test_android_weiboverify</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.3')" >
+        fail</a>
+
+    <div id='div_ft7.3' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.3').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.3: ##### THIS IS IN DEBUG MODLE #####
+/键:msg:预期值:ok&lt;type 'str'&gt;,实际值:请使用奶糖认证&lt;type 'str'&gt;
+/键:error:预期值:0&lt;type 'int'&gt;,实际值:8031&lt;type 'int'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_verify.py", line 46, in test_android_weiboverify
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.4' class='none'>
+    <td class='failCase'><div class='testcase'>test_android_weiboverify_detail</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.4')" >
+        fail</a>
+
+    <div id='div_ft7.4' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.4').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.4: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:reason:预期值:宇宙第一帅&lt;type 'str'&gt;,实际值:奶糖第一帅&lt;type 'str'&gt;
+/键:data/键:avatar:预期值:http://quc.qhimg.com/t019024a70292978a30.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/t01882765775db65650.jpg&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_verify.py", line 73, in test_android_weiboverify_detail
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.5' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_officeverify</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.5')" >
+        fail</a>
+
+    <div id='div_ft7.5' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.5').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.5: ##### THIS IS IN DEBUG MODLE #####
+/键:msg:预期值:ok&lt;type 'str'&gt;,实际值:审核中，不能修改&lt;type 'str'&gt;
+/键:error:预期值:0&lt;type 'int'&gt;,实际值:8040&lt;type 'int'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_verify.py", line 213, in test_iphone_officeverify
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.6' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_officeverify_detail</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.6')" >
+        fail</a>
+
+    <div id='div_ft7.6' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.6').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.6: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:status:预期值:1&lt;type 'int'&gt;,实际值:2&lt;type 'str'&gt;
+/键:data/键:phone:预期值:f76NjL9J1ngy0omI+5p5qw==&lt;type 'str'&gt;,实际值:AU7DG6Vq2yHbjW8lV3iFkw==&lt;type 'str'&gt;
+/键:data/键:reason:预期值:宇宙第一帅&lt;type 'str'&gt;,实际值:胖子&lt;type 'str'&gt;
+/键:data/键:code:预期值:zscJrRTMXMb5M7L2B0+EbBsJIns+Zq28&lt;type 'str'&gt;,实际值:LJh9VAu839+UyTZavuMfbwe++d7q7j3U&lt;type 'str'&gt;
+/键:data/键:realname:预期值:帅哥&lt;type 'str'&gt;,实际值:胖子&lt;type 'str'&gt;
+/键:data/键:imgReason:预期值:http://dl-beijing.oss.yunpan.360.cn/oss/naitang-img-qa/aW1hZ2UvMjAxNzA3MjAvOTk4OTI0NzRhNzM5MDljZTdiMTdkYTY2YmExNTJmNGEuanBn?scid=93&amp;fhash=98fdd6df444339f266b30c6da45c743c672b70d0&amp;e=1500599007&amp;uid=162963675&amp;validity=0&amp;keyspace=1&amp;s=e3f812962832e637e1c827895cc70172&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:auditReason:预期值:你真的是宇宙第一帅吗&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+/键:data/键:imgCode:预期值:http://dl-beijing.oss.yunpan.360.cn/oss/naitang-img-qa/aW1hZ2UvMjAxNzA3MjAvOTk4OTI0NzRhNzM5MDljZTdiMTdkYTY2YmExNTJmNGEuanBn?scid=93&amp;fhash=98fdd6df444339f266b30c6da45c743c672b70d0&amp;e=1500599007&amp;uid=162963675&amp;validity=0&amp;keyspace=1&amp;s=e3f812962832e637e1c827895cc70172&lt;type 'str'&gt;,实际值:&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_verify.py", line 245, in test_iphone_officeverify_detail
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.7' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_weiboverify</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.7')" >
+        fail</a>
+
+    <div id='div_ft7.7' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.7').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.7: ##### THIS IS IN DEBUG MODLE #####
+/键:msg:预期值:ok&lt;type 'str'&gt;,实际值:请使用奶糖认证&lt;type 'str'&gt;
+/键:error:预期值:0&lt;type 'int'&gt;,实际值:8031&lt;type 'int'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_verify.py", line 158, in test_iphone_weiboverify
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='ft7.8' class='none'>
+    <td class='failCase'><div class='testcase'>test_iphone_weiboverify_detail</div></td>
+    <td colspan='5' align='center'>
+
+    <!--css div popup start-->
+    <a class="popup_link" onfocus='this.blur();' href="javascript:showTestDetail('div_ft7.8')" >
+        fail</a>
+
+    <div id='div_ft7.8' class="popup_window">
+        <div style='text-align: right; color:red;cursor:pointer'>
+        <a onfocus='this.blur();' onclick="document.getElementById('div_ft7.8').style.display = 'none' " >
+           [x]</a>
+        </div>
+        <pre>
+        
+ft7.8: ##### THIS IS IN DEBUG MODLE #####
+/键:data/键:reason:预期值:宇宙第一帅&lt;type 'str'&gt;,实际值:奶糖第一帅&lt;type 'str'&gt;
+/键:data/键:avatar:预期值:http://quc.qhimg.com/t019024a70292978a30.jpg&lt;type 'str'&gt;,实际值:http://quc.qhimg.com/t01882765775db65650.jpg&lt;type 'str'&gt;
+Traceback (most recent call last):
+  File "E:\pyscript\NT_APITEST\case\case_verify.py", line 185, in test_iphone_weiboverify_detail
+    self.fail()
+AssertionError: None
+
+
+        </pre>
+    </div>
+    <!--css div popup end-->
+
+    </td>
+</tr>
+
+<tr id='total_row'>
+    <td>Total</td>
+    <td>43</td>
+    <td>7</td>
+    <td>35</td>
+    <td>1</td>
+    <td>&nbsp;</td>
+</tr>
+</table>
+
+<div id='ending'>&nbsp;</div>
+
+</body>
+</html>
