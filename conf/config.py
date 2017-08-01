@@ -1,5 +1,8 @@
 #coding:utf-8
 
+#只对比结构,不care数据
+CMP_FRAME_ONLY=True
+
 #debug模式，为真时打印对比结果
 IS_DEBUG=False
 
