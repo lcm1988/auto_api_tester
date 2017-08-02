@@ -2,7 +2,12 @@
 import os,sys
 import unittest
 import HTMLTestRunner
-from time import time
+import time
+
+thispath = os.path.abspath(os.path.dirname(sys.argv[0]))
+basepath = thispath[:-5]
+sys.path.append(basepath)
+
 from conf.config import RUN_ALL_CASE,RUN_MODULES,RUN_CLASSES,RUN_CASES
 
 #获取run.py所在路径
@@ -41,7 +46,7 @@ else:
     suits= unittest.TestSuite(suit_list)
 
 log_path=path.replace('main','log')
-filename=log_path+r"\test_%d.html"%int(time())
+filename=log_path+r"\test_%d.html"%int(time.time())
 fp=open(filename,'wb')
 runner=HTMLTestRunner.HTMLTestRunner(stream=fp,title=u'自动化测试报告',description=u'自动化测试报告desc',verbosity=2)
 runner.run(suits)
