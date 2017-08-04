@@ -7,7 +7,7 @@ from poster.encode import multipart_encode
 from poster.streaminghttp import register_openers
 from conf.config import USE_PROXY,PROXY_HOST,PROXY_PORT
 
-class httpconnecter():
+class httpconnector():
     def __init__(self):
         pass
 

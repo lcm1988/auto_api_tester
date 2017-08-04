@@ -4,7 +4,7 @@ from json import loads
 from urllib import urlencode
 from conf import basedata
 from tools.result_decorator import decorator
-from tools.http_connector import httpconnecter
+from tools.http_connector import httpconnector
 
 class case_device(unittest.TestCase):
     #定义初始数据方法
@@ -18,7 +18,7 @@ class case_device(unittest.TestCase):
         para=self.commonpara
         para['flag']=2
         url='http://toffee.app.test.tvfanqie.com/iphone/common/online?%s'%urlencode(para)
-        a,b=httpconnecter().conn(url,'GET',header=self.headers)
+        a,b=httpconnector().conn(url,'GET',header=self.headers)
         b=loads(b)
         expect_json={
             "error": 0,
