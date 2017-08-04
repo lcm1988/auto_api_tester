@@ -4,7 +4,7 @@ from json import loads
 from urllib import urlencode
 from conf import basedata
 from tools.result_decorator import decorator
-from tools.http_connercter import httpconnecter
+from tools.http_connector import httpconnecter
 
 class case_device(unittest.TestCase):
     #定义初始数据方法
