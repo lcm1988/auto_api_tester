@@ -12,14 +12,26 @@ class case_device(unittest.TestCase):
         self.commonpara= basedata.commonpara
         #定义请求头
         self.headers= basedata.nt_headers
+
     @decorator
-    def test_iphone_restart(self):
-        '''程序后台唤起'''
+    def test_iphone_restart1(self):
+        '''程序后台唤起1'''
         para=self.commonpara
         para['flag']=2
         url='http://toffee.app.test.tvfanqie.com/iphone/common/online?%s'%urlencode(para)
         a,b=httpconnector().conn(url,'GET',header=self.headers)
         b=loads(b)
+        expect_json={
+            "error": 0,
+            "msg": "ok",
+            "data": {}
+        }
+        return expect_json,b
+
+    @decorator
+    def test_iphone_restart2(self):
+        '''程序后台唤起2'''
+        b=self.test_iphone_restart1(func_data=True)[1]
         expect_json={
             "error": 0,
             "msg": "ok",

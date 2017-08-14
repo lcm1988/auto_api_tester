@@ -3,8 +3,9 @@ from conf.config import CMP_FRAME_ONLY
 from tools.json_compare import jsoncompare
 
 def decorator(fun):
-    def test(*args):
+    def test(*args,**kwargs):
         comment=fun.func_doc if fun.func_doc else fun.func_name
+        if kwargs.get('func_data',False)==True:return fun(*args)
         print "%s RESULT OF \"%s\" %s"%("#"*10,comment,"#"*10)
         a,b= fun(*args)
         res=jsoncompare(a,b)
@@ -16,4 +17,12 @@ def decorator(fun):
             print '对比成功'
             pass
     return test
+
+@decorator
+def myfunc():
+    return 1,1
+
+if __name__=="__main__":
+    myfunc()#case调用，无返回结果
+    print myfunc(func_data=True)#返回原方法结果
 
