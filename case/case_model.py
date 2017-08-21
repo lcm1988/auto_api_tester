@@ -9,14 +9,14 @@ from tools.http_connector import httpconnector
 class case_device(unittest.TestCase):
     #定义初始数据方法
     def setUp(self):
-        self.commonpara= basedata.commonpara
+        self.commonpara= basedata.commonpara.copy()
         #定义请求头
-        self.headers= basedata.nt_headers
+        self.headers= basedata.nt_headers.copy()
 
     @decorator
     def test_iphone_restart1(self):
         '''程序后台唤起1'''
-        para=self.commonpara
+        para=self.commonpara.copy()
         para['flag']=2
         url='http://toffee.app.test.tvfanqie.com/iphone/common/online?%s'%urlencode(para)
         a,b=httpconnector().conn(url,'GET',header=self.headers)
